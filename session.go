@@ -33,11 +33,12 @@ type Session struct {
 func NewSession(addr string) *Session {
 	ctx, cancel := context.WithCancel(context.Background())
 	s := &Session{
-		addr:        addr,
-		ctx:         ctx,
-		cancel:      cancel,
-		subscribers: make(map[string]Subscriber),
-		publishers:  make(map[string]PublishExchange),
+		addr:          addr,
+		ctx:           ctx,
+		cancel:        cancel,
+		subscribers:   make(map[string]Subscriber),
+		publishers:    make(map[string]PublishExchange),
+		consumerQueue: "",
 	}
 
 	return s
@@ -97,7 +98,7 @@ func (s *Session) Publish(routingKey string, event interface{}) error {
 
 	ch, err := s.produceConn.Channel()
 	if err != nil {
-	    return err
+		return err
 	}
 
 	if err := ch.Publish(string(exchange), routingKey, false, false, publishing); err != nil {
@@ -187,7 +188,6 @@ func (s *Session) Consume() {
 			time.Sleep(5 * time.Second)
 			continue
 		}
-
 
 		ch, err := s.consumeConn.Channel()
 		if err != nil {

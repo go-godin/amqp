@@ -1,4 +1,4 @@
-module amqp
+module github.com/go-godin/amqp
 
 go 1.12
 

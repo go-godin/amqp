@@ -1,7 +1,7 @@
 package main
 
 import (
-	"amqp"
+	"github.com/go-godin/amqp"
 	"os"
 	"os/signal"
 	"syscall"

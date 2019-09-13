@@ -195,6 +195,8 @@ func (s *Session) Consume() {
 			continue
 		}
 
+		_ = ch.Qos(10, 0, false)
+
 		deliveries, err := ch.Consume(s.consumerQueue, "", false, false, false, false, nil)
 		if err != nil {
 			log.Error("consumer error", "err", err)

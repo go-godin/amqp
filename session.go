@@ -195,7 +195,7 @@ func (s *Session) Consume() {
 			continue
 		}
 
-		deliveries, err := ch.Consume(s.consumerQueue, "auto-tag", false, false, false, false, nil)
+		deliveries, err := ch.Consume(s.consumerQueue, "", false, false, false, false, nil)
 		if err != nil {
 			log.Error("consumer error", "err", err)
 			continue

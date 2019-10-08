@@ -150,7 +150,7 @@ func (s *Session) Declare() error {
 	// declare all the consumer things!
 	if len(s.producerDecls) > 0 {
 		ch, _ := s.produceConn.Channel()
-		for _, declare := range s.consumerDecls {
+		for _, declare := range s.producerDecls {
 			if err := declare(ch); err != nil {
 				return fmt.Errorf("failed to declare for producer: %s", err.Error())
 			}

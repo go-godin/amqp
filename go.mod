@@ -3,7 +3,7 @@ module github.com/go-godin/amqp
 go 1.12
 
 require (
-	bitbucket.org/jdbergmann/protobuf-go v0.0.0-20190822140851-8a4844e6b2cd // indirect
+	bitbucket.org/jdbergmann/protobuf-go v0.0.0-20190822140851-8a4844e6b2cd
 	github.com/go-godin/log v0.0.0-20190906081827-b878dd21d054
 	github.com/golang/protobuf v1.3.0
 	github.com/pkg/errors v0.8.1
